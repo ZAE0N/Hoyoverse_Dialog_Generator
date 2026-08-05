@@ -139,7 +139,11 @@ body[data-game="zzz"] .choice-row .iconSel { display:block; }
       <legend>대화창</legend>
       <label for="name">이름</label>
       <input type="text" id="name" placeholder="예: 페이몬" value="페이몬">
-      <label for="subtitle" class="gi-only">부제 (선택)</label>
+      <div class="row gi-only" style="justify-content:space-between; margin-top:8px">
+        <label for="subtitle">부제 (선택)</label>
+        <button id="clearSub" type="button" title="입력한 부제 지우기" aria-label="부제 지우기"
+                style="padding:2px 9px; font-size:12px; line-height:1.6">✕</button>
+      </div>
       <input type="text" id="subtitle" class="gi-only" placeholder="예: 최고의 동료">
       <div class="row" style="justify-content:space-between; margin-top:8px">
         <label for="text" style="margin:0">대사</label>
@@ -850,6 +854,7 @@ for (const id of ["name","subtitle","text"]) {
   state[id] = $(id).value;
 }
 $("clearText").addEventListener("click", () => { $("text").value = ""; state.text = ""; render(); });
+$("clearSub").addEventListener("click", () => { $("subtitle").value = ""; state.subtitle = ""; render(); });
 $("showTri").addEventListener("change", () => { state.showTri = $("showTri").checked; render(); });
 $("choiceYellow").addEventListener("change", () => { state.choiceYellow = $("choiceYellow").checked; render(); });
 $("choiceTextYellow").addEventListener("change", () => { state.choiceTextYellow = $("choiceTextYellow").checked; render(); });
